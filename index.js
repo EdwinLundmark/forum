@@ -53,13 +53,19 @@ app.post('/submit-post', (req, res) => {
         ('0' + date.getSeconds()).slice(-2);
 
 
-    if (req.body.postIndex != undefined) {
-        json.posts[req.body.postIndex].comments.unshift({
-            "author": author,
-            "timestamp": formattedDate,
-            "image": imageName,
-            "content": content,
+    if (req.body.postID != undefined) {
+        json.posts.forEach(post => {
+            if (post.id === req.body.postID) {
+                post.comments.unshift({
+                    "author": author,
+                    "timestamp": formattedDate,
+                    "image": imageName,
+                    "content": content,
+                });
+            }
         });
+
+
     }
     else {
         json.posts.unshift({
@@ -94,8 +100,6 @@ app.get('/post/:id', (req, res) => {
 
         }
     }
-
-    console.log(post[0])
 
     res.render('index', { posts: post, comment: true });
 })

@@ -62,7 +62,8 @@
 
                     <textarea name="content" rows="4" cols="80" class="submitContent"></textarea>
 
-                    <button type="submit" class="submitButton" onclick="submitComment(event)">Submit</button>
+                    <button type="submit" class="submitButton"
+                        onclick="submitComment(event, <%= posts[i].id %>)">Submit</button>
                 </form>
 
                 <div class="content">

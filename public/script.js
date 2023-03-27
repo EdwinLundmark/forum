@@ -80,7 +80,7 @@ function submitForm(event) {
 
 }
 
-function submitComment(event) {
+function submitComment(event, id) {
     event.preventDefault(); // prevent default form submission
     const forms = document.querySelectorAll('.submitComment');
 
@@ -107,7 +107,7 @@ function submitComment(event) {
         data[key] = value
     });
 
-    data['postIndex'] = formIndex;
+    data['postID'] = id;
 
     const imageFile = formData.get('image');
     const reader = new FileReader();
