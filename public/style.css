@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: #0077b6;
+}
+
+header {
+    width: 100%;
+}
+
+.headerImg {
+    object-fit: cover;
+    object-position: 0 40%;
+    width: 100%;
+    height: 20vh;
+    margin-bottom: 50px;
+}
+
+.boards {
+    background-color: #90e0ef;
+}
+
+.post,
+.comment {
+    position: relative;
+    margin-left: 5%;
+    margin-bottom: 6ch;
+    width: 90%;
+    height: max-content;
+    background-color: #90e0ef;
+    display: table;
+}
+
+.comment {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.postImage {
+    float: left;
+    width: fit-content;
+}
+
+.postImage>img {
+    display: block;
+    width: 12vw;
+    min-width: 100px;
+    height: auto;
+}
+
+.author {
+    /* position: relative; */
+    margin: 1ch;
+    margin-right: 0;
+    display: inline-block;
+}
+
+.timestamp {
+    display: inline-block;
+    clear: both;
+}
+
+.content {
+    position: relative;
+    left: 1ch;
+    margin-right: 1ch;
+    margin-bottom: 3.5ch;
+    white-space: pre-line;
+}
+
+.commentsButton {
+    position: absolute;
+    bottom: 1ch;
+}
+
+.submitPost,
+.submitComment {
+    margin-left: 5%;
+    margin-bottom: 4ch;
+    width: fit-content;
+    max-width: 80%;
+    background-color: #4aa3b3;
+    padding: 1ch;
+}
+
+.submitComment {
+    display: none;
+    position: absolute;
+    left: 20%;
+    z-index: 5;
+}
+
+.submitContent {
+    display: block;
+    margin-top: 2ch;
+    max-width: 80%;
+}
+
+.submitButton {
+    margin-top: 1ch;
+}

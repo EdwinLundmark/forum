@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/script.js" defer></script>
+    <link rel="stylesheet" href="/style.css">
+    <title>Forum</title>
+</head>
+
+<body>
+    <header>
+        <nav class="boards">
+            Boards:
+            <a href="">Test</a>
+            <a href="">Test</a>
+            <a href="">Test</a>
+            <a href="">Test</a>
+            <a href="">Test</a>
+        </nav>
+        <img src="/images/xp.jpg" alt="windows xp background" class="headerImg">
+    </header>
+
+    <main>
+
+        <form action="/submit-post" method="POST" class="submitPost">
+            <label for="author">Name: </label>
+            <input type="text" name="author">
+
+            <input type="file" id="image" name="image" accept="image/png, image/jpeg">
+
+            <textarea name="content" rows="4" cols="80" class="submitContent"></textarea>
+
+            <button type="submit" class="submitButton" onclick="submitForm(event)">Submit</button>
+        </form>
+
+        <% for(let i=0; i<posts.length; i++) {%>
+            <div class="post">
+                <div class="postImage">
+                    <%= posts[i].image %>
+                </div>
+
+                <div class="author">
+                    <b>
+                        <%= posts[i].author %>
+                    </b>
+                </div>
+
+                <span class="timestamp">
+                    <%= posts[i].timestamp %>
+                </span>
+
+                <button class="reply" onclick="unhideReply(<%= i %>)">Reply</button>
+
+                <form action="/submit-post" method="POST" class="submitComment">
+                    <label for="author">Name: </label>
+                    <input type="text" name="author">
+
+                    <input type="file" id="image" name="image" accept="image/png, image/jpeg">
+
+                    <textarea name="content" rows="4" cols="80" class="submitContent"></textarea>
+
+                    <button type="submit" class="submitButton" onclick="submitComment(event)">Submit</button>
+                </form>
+
+                <div class="content">
+                    <%= posts[i].content %>
+                </div>
+
+                <a href="/post/<%= posts[i].id %>" class="commentsButton">View thread</a>
+            </div>
+
+            <%let len=posts[i].comments.length%>
+                <% for(let j=(comment ? len-1 : 1%len); j>=0; j--) {%>
+                    <div class="comment">
+                        <div class="postImage">
+                            <%= posts[i].comments[j].image %>
+                        </div>
+
+                        <div class="author">
+                            <b>
+                                <%= posts[i].comments[j].author %>
+                            </b>
+                        </div>
+
+                        <span class="timestamp">
+                            <%= posts[i].comments[j].timestamp %>
+                        </span>
+
+                        <div class="content">
+                            <%= posts[i].comments[j].content %>
+                        </div>
+                    </div>
+                    <% } %>
+                        <% } %>
+    </main>
+
+</body>
+
+</html>
